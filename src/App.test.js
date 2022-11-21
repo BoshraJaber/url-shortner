@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import Hero from './components/Main/Hero/Hero';
+
+test('Renders Hero section title', () => {
+  let res = render(<Hero />);
+  console.log
+  const heroTitle = screen.getByText(/More than just shorter links/i);
+  expect(heroTitle).toBeInTheDocument();
 });
