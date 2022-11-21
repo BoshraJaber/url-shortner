@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./Form.css";
-import { useDispatch, useSelector } from "react-redux";
 
 
 const List = ({ shortUrl, longUrl }) => {

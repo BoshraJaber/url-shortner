@@ -5,13 +5,12 @@ import List from './List';
 import "./Form.css";
 
 const Form = () => {
-    const [longUrl, setLongUrl] = useState(""); // user input (long url)
+    const [longUrl, setLongUrl] = useState(""); // long url from user input
     const [shortUrl, setShortUrl] = useState(""); // short url from API
     const [empty, setEmpty] = useState(false);
     const [loader, setLoader] = useState();
 
     const urls = useSelector(state => state)
-
     const dispatch = useDispatch();
 
     const fetchShortenUrl = (url) => {
@@ -19,7 +18,8 @@ const Form = () => {
             .then(response => response.json())
             .then(result => {
                 let shortUrl = JSON.stringify(result["result"]["full_short_link"]);
-                setShortUrl(shortUrl.replaceAll('"', ""));
+                shortUrl = shortUrl.replaceAll('"', "");
+                setShortUrl(shortUrl);
                 setLoader(false);
                 dispatch(save({ longUrl, shortUrl }))
             })
@@ -28,10 +28,12 @@ const Form = () => {
 
     const handleChange = (e) => {
         setLongUrl(e.target.value);
+
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(longUrl)
         if (longUrl === "") setEmpty(true);
         else {
             setLoader(true);
@@ -41,6 +43,7 @@ const Form = () => {
         }
 
         e.target.reset();
+        setLongUrl("");
     };
 
     useEffect(() => {
@@ -73,7 +76,7 @@ const Form = () => {
                     </p>
                 </section>
                 <ul className="short-link">
-                    {urls && urls.map((item, idx) => <List
+                    {urls.length > 0 && urls.map((item, idx) => <List
                         key={idx}
                         shortUrl={item.shortUrl}
                         longUrl={item.longUrl}
