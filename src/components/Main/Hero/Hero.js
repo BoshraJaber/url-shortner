@@ -15,7 +15,10 @@ const Hero = () => {
                         <button>Get Started</button>
                     </section>
                     <section className="hero-bg">
-                        <img src={heroImage} alt="illustration working" />
+                        <img src={heroImage} alt="illustration working" rel="preload" style={{
+                            width: "100%",
+                            height: "auto",
+                        }} />
                     </section>
                 </section>
             </section>

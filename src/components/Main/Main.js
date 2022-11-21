@@ -1,14 +1,20 @@
-import Hero from "./Hero/Hero";
-import Form from './Form/Form';
-import Statistics from './Statistics/Statistics'
-import BootsLinks from './BoostLinks/BoostLinks'
+import React, { Suspense } from 'react';
+
+const Hero = React.lazy(() => import('./Hero/Hero'));
+const Form = React.lazy(() => import('./Form/Form'));
+const Statistics = React.lazy(() => import('./Statistics/Statistics'));
+const BootsLinks = React.lazy(() => import('./BoostLinks/BoostLinks'));
+
+
 const Main = () => {
     return (
         <>
             <Hero />
-            <Form />
-            <Statistics />
-            <BootsLinks />
+            <Suspense fallback={<section>Loading...</section>}>
+                <Form />
+                <Statistics />
+                <BootsLinks />
+            </Suspense>
         </>
     )
 }
