@@ -12,7 +12,7 @@ const Navbar = () => {
                 <nav>
                     <ul className="links">
                         <section className="logo-header">
-                            <img src={logo} alt="logo" />
+                            <img src={logo} alt="Shortly Logo" />
                         </section>
                         <section className={showMenu === true ? "responsive-nav unfold" : "responsive-nav"} >
                             <section className="nav-links">
@@ -28,7 +28,7 @@ const Navbar = () => {
                     </ul>
 
                     <li className="nav-toggle" onClick={() => setShowMenu(!showMenu)}>
-                        <img src={iconMenu} alt="mobile menu" />
+                        <img src={iconMenu} alt="Mobile Menu Icon" />
                     </li>
                 </nav>
             </header>
